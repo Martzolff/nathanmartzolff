@@ -5,10 +5,18 @@
   src: url(/static/font/bahnschrift.ttf);
 }
 
-:root {
+html {
   --primary: #5cb0c8;
   --secondary: #6ed2ef;
   --background: #fff;
+  --text: #708090;
+  --theme-transition: ease-in-out .3s;
+}
+
+html.dark {
+  --primary: #5cb0c8;
+  --secondary: #6ed2ef;
+  --background: #39434D;
   --text: #708090;
 }
 
@@ -34,11 +42,11 @@ body {
   color: var(--text);
   position: relative;
   scroll-behavior: smooth;
-  transition: opacity ease-in-out .5s;
+  transition: background-color var(--theme-transition);
 }
 
-body.hide {
-  opacity: 0;
+html.dark body {
+  color: var(--primary);
 }
 
 h1, h2, h3, h4, h5, h6, .landing-title {
@@ -60,8 +68,13 @@ a {
 
 input, input::placeholder, textarea, textarea::placeholder {
   color: inherit;
+  background: inherit;
   font: inherit;
   border: none;
+}
+
+html.dark input, html.dark input::placeholder, html.dark textarea, html.dark textarea::placeholder {
+  color: var(--text);
 }
 
 input:focus, textarea:focus {
@@ -120,6 +133,10 @@ main {
   z-index: 9999;
 }
 
+html.dark #cursor {
+  border-color: var(--secondary);
+}
+
 #cursor::after {
   content: '';
   background: none;
@@ -155,6 +172,28 @@ main {
 /***************/
 /* END CURSORS */
 /***************/
+
+/*********/
+/* THEME */
+/*********/
+
+#theme {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  transition: all ease-in-out .3s;
+  font-size: 30px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+#theme:hover {
+  transform: scale(1.8);
+  text-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+/*************/
+/* END THEME */
+/*************/
 
 /************/
 /* SECTIONS */
@@ -215,6 +254,7 @@ section {
 #landing {
   padding: 25px;
   width: 100%;
+  position: relative;
 }
 
 .landing-title {
@@ -230,13 +270,44 @@ section {
   height: 100%;
   background: var(--background);
   position: absolute;
-  left: 0;
+  right: 0;
   top: 0;
-  transition: transform 1.5s ease-in-out;
+  transition: width 1.5s ease-in-out, background-color var(--theme-transition);
 }
 
 .landing-title.loaded::after {
-  transform: translateX(100%);
+  width: 0;
+}
+
+#scroll {
+  width: 50px;
+  height: 50px;
+  border: 3px solid var(--primary);
+  border-radius: 50%;
+  position: absolute;
+  bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#scroll::before, #scroll::after {
+  content: '';
+  width: 20px;
+  height: 3px;
+  background: var(--primary);
+  position: absolute;
+  transform-origin: center;
+}
+
+#scroll::before {
+  transform: rotate(45deg);
+  left: 6px;
+}
+
+#scroll::after {
+  transform: rotate(-45deg);
+  right: 6px;
 }
 
 @media screen and (max-width: 400px) {
@@ -262,8 +333,32 @@ section {
   width: 100%;
 }
 
+html.dark #about {
+  background: var(--primary);
+}
+
 #about p {
   margin: 10px 0;
+}
+
+#about a {
+  font-weight: bold;
+  position: relative;
+}
+
+#about a::after {
+  content: '';
+  height: 2px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  background: var(--background);
+  transition: width ease-in-out .3s;
+}
+
+#about a:hover::after {
+  width: 100%;
 }
 
 /*************/
@@ -279,6 +374,30 @@ section {
   min-height: 100vh;
   width: 100%;
   position: relative;
+}
+
+#skills ul li {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#skills ul li span {
+  margin-right: 20px;
+}
+
+.fill-bg {
+  width: 200px;
+  height: 15px;
+  background: var(--text);
+  position: relative;
+}
+
+.fill {
+  position: absolute;
+  left: 0;
+  height: 15px;
 }
 
 .skill-container {
@@ -424,13 +543,13 @@ section {
 #portfolio {
   padding: 25px;
   width: 100%;
-  max-width: 1300px;
   margin-top: 500px;
 }
 
 .projects {
   margin-top: 50px;
   width: 100%;
+  max-width: 1300px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -451,24 +570,62 @@ section {
 }
 
 .details {
-  padding: 25px;
+  padding: 35px;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, .65);
+  background: rgba(0, 0, 0, .75);
   border-radius: 15px;
   position: absolute;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   opacity: 0;
   visibility: hidden;
   transition: all ease-in-out .3s;
   z-index: 9;
 }
 
+.details li::before {
+  content: '- ';
+}
+
+html.dark .details {
+  background: rgba(255, 255, 255, .9);
+}
+
 .project:hover .details {
   opacity: 1;
   visibility: visible;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.links a {
+  position: relative;
+  align-self: flex-start;
+}
+
+.links span, .links a {
+  margin-top: 25px;
+}
+
+.links a::after {
+  content: '';
+  width: 0;
+  height: 2px;
+  background: var(--secondary);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: width ease-in-out .3s;
+}
+
+.links a:hover::after {
+  width: 100%;
 }
 
 @media screen and (max-width: 1100px) {
