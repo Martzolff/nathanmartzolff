@@ -1,4 +1,8 @@
+import Image from "next/image"
 import { FC, useState } from "react"
+import github from '../public/static/img/contact/github.svg'
+import linkedin from '../public/static/img/contact/linkedin.svg'
+import telephone from '../public/static/img/contact/telephone.svg'
 
 const Contact: FC = () => {
 
@@ -7,6 +11,8 @@ const Contact: FC = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [message, setMessage] = useState('')
+
+    const iconSize = 35
 
     const onSubmit = async (e: React.SyntheticEvent) => {
         e.preventDefault()
@@ -30,6 +36,17 @@ const Contact: FC = () => {
     return (
         <section id="contact" className="full-screen">
             <h2>contact me</h2>
+            <div className="contact-links">
+                <a href="https://www.linkedin.com/in/nathan-martzolff-46a426170/" target="_blank" rel="noopener noreferrer">
+                    <Image src={linkedin} width={iconSize} height={iconSize} alt="LinkedIn" />
+                </a>
+                <a href="tel:+33644229129">
+                    <Image src={telephone} width={iconSize} height={iconSize} alt="Telephone" />
+                </a>
+                <a href="https://github.com/Martzolff" target="_blank" rel="noopener noreferrer">
+                    <Image src={github} width={iconSize} height={iconSize} alt="Github" />
+                </a>
+            </div>
             <form onSubmit={onSubmit}>
                 <div className="field">
                     <label htmlFor="name">Name</label>

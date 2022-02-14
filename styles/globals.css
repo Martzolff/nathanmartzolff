@@ -285,7 +285,7 @@ section {
   border: 3px solid var(--primary);
   border-radius: 50%;
   position: absolute;
-  bottom: 50px;
+  bottom: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -365,177 +365,6 @@ html.dark #about {
 /* END ABOUT */
 /*************/
 
-/**********/
-/* SKILLS */
-/**********/
-
-#skills {
-  margin-top: 100px;
-  min-height: 100vh;
-  width: 100%;
-  position: relative;
-}
-
-#skills ul li {
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-#skills ul li span {
-  margin-right: 20px;
-}
-
-.fill-bg {
-  width: 200px;
-  height: 15px;
-  background: var(--text);
-  position: relative;
-}
-
-.fill {
-  position: absolute;
-  left: 0;
-  height: 15px;
-}
-
-.skill-container {
-  position: absolute;
-}
-
-.skill {
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  will-change: transform;
-}
-
-#firebase {
-  right: 15%;
-  bottom: 10%;
-  /* transform: rotate(-3deg); */
-}
-
-#flutter {
-  left: 8%;
-  top: 84%;
-  /* transform: rotate(-8deg); */
-}
-
-#html {
-  left: 65%;
-  top: 45%;
-  /* transform: rotate(0deg); */
-}
-
-#dart {
-  left: 2%;
-  top: 3%;
-  /* transform: rotate(20deg); */
-}
-
-#javascript {
-  left: 74%;
-  top: 3%;
-  /* transform: rotate(-10deg); */
-}
-
-#mysql {
-  left: 50%;
-  top: 5%;
-  /* transform: rotate(45deg); */
-}
-
-#php {
-  left: 47%;
-  top: 78%;
-  /* transform: rotate(-12deg); */
-}
-
-#react {
-  left: 20%;
-  top: 45%;
-  /* transform: rotate(0deg); */
-}
-
-#css {
-  left: 75%;
-  top: 45%;
-  /* transform: rotate(0deg); */
-}
-
-@media screen and (max-width: 1250px) {
-  #css {
-    left: 80%;
-  }
-}
-
-@media screen and (max-width: 750px) {
-  #firebase {
-    right: 20%;
-  }
-
-  #react {
-    top: 27%;
-    left: 10%;
-  }
-
-  #html {
-    top: 52%;
-  }
-
-  #css {
-    top: 48%;
-  }
-}
-
-@media screen and (max-width: 550px) {
-  #html {
-    top: 55%;
-    left: 0;
-  }
-
-  #css {
-    top: 58%;
-    left: 60%;
-  }
-
-  #javascript {
-    top: 20%;
-    left: 60%;
-  }
-}
-
-@media screen and (max-width: 450px) {
-  #dart {
-    left: -10%;
-  }
-
-  #react {
-    left: -3%;
-  }
-
-  #flutter {
-    left: 0%;
-    top: 75%;
-  }
-
-  #php {
-    top: 90%;
-    left: -8%;
-  }
-
-  #firebase {
-    right: 50%;
-    top: 80%;
-  }
-}
-
-/**************/
-/* END SKILLS */
-/**************/
-
 /*************/
 /* PORTFOLIO */
 /*************/
@@ -573,7 +402,7 @@ html.dark #about {
   padding: 35px;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, .75);
+  background: rgba(0, 0, 0, .85);
   border-radius: 15px;
   position: absolute;
   display: flex;
@@ -650,6 +479,14 @@ html.dark .details {
   width: 100%;
   margin-top: 500px;
   padding: 25px;
+}
+
+.contact-links {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  justify-content: space-around;
 }
 
 form {

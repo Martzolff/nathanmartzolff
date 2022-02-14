@@ -6,7 +6,6 @@ import About from '../sections/about'
 import Contact from '../sections/contact'
 import Landing from '../sections/landing'
 import Portfolio from '../sections/portfolio'
-import Skills from '../sections/skills'
 
 const App = () => {
   return (<>
@@ -68,7 +67,6 @@ const Site: NextPage = () => {
       <div className="sections">
         <Landing />
         <About />
-        {/* <Skills /> */}
         <Portfolio />
         <Contact />
       </div>
