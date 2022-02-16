@@ -1,5 +1,4 @@
 import { FC } from "react"
-import { Fade } from "react-awesome-reveal"
 import { Parallax } from "react-scroll-parallax"
 
 const About: FC = () => {
