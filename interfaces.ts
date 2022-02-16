@@ -6,7 +6,7 @@ export interface SkillProps {
 export interface ProjectProps {
     name: string;
     description: string;
-    image: StaticImageData;
+    image: string;
     stack: string[];
     link?: string;
     android?: string;

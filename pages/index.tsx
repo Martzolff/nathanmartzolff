@@ -24,6 +24,8 @@ const Site: NextPage = () => {
   const cursorRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    setVH()
+    window.addEventListener('resize', setVH)
     document.onmousemove = (e: any) => {
       if (isTouchDevice()) return
       const x = e.clientX - 20;
@@ -37,6 +39,11 @@ const Site: NextPage = () => {
       el.onmouseleave = () => setCursorClassName('none')
     })
   })
+
+  const setVH = () => {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
 
   const setCursorClassName = (className: string) => {
     cursorRef.current!.className = className

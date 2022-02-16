@@ -100,15 +100,26 @@ main {
 
 .full-screen {
   min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 570px) {
   body {
     font-size: 15px;
   }
 
   h2 {
-    font-size: 20vw;
+    font-size: 16vw;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  body {
+    font-size: 13px;
+  }
+
+  h2 {
+    font-size: 12vw;
   }
 }
 
@@ -285,10 +296,11 @@ section {
   border: 3px solid var(--primary);
   border-radius: 50%;
   position: absolute;
-  bottom: 25px;
+  bottom: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 99;
 }
 
 #scroll::before, #scroll::after {
@@ -331,6 +343,7 @@ section {
   background: var(--secondary);
   color: var(--background);
   width: 100%;
+  transition: background-color ease-in-out .3s, color ease-in-out .3s;
 }
 
 html.dark #about {
@@ -396,6 +409,11 @@ html.dark #about {
   justify-content: center;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   position: relative;
+}
+
+.project img {
+  width: 100%;
+  height: auto;
 }
 
 .details {
@@ -487,6 +505,30 @@ html.dark .details {
   max-width: 300px;
   display: flex;
   justify-content: space-around;
+  position: relative;
+}
+
+.contact-links > a {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+#telephone {
+  padding: 5px 10px;
+  position: absolute;
+  top: 100%;
+  border-radius: 10px;
+  background: var(--background);
+  box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all ease-in-out .3s;
+}
+
+.contact-links > a:hover + #telephone, #telephone:hover {
+  opacity: 1;
+  visibility: visible;
 }
 
 form {
@@ -613,6 +655,13 @@ label {
 @media screen and (max-width: 400px) {
   #send {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .contact-links img {
+    width: 25px;
+    height: 25px;
   }
 }
 
